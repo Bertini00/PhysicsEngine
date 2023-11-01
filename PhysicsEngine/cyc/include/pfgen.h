@@ -102,4 +102,137 @@ private:
 
 };
 
+class ParticleSpring : public ParticleForceGenerator
+{
+public:
+	/*
+	* Creates a new spring with the given parameters
+	*/
+	ParticleSpring(Particle* other, real springConstant, real restLength);
+
+	/*
+	* Applies the spring force to the given particle
+	*/
+	virtual void updateForce(Particle* particle, real duration);
+
+private:
+	/*
+	* The particle at the other end of the spring
+	*/
+	Particle* other;
+
+	/*
+	Holds the spring constant
+	*/
+	real springConstant;
+
+	/*
+	Holds the rest length of the spring
+	*/
+	real restLength;
+
+};
+
+class ParticleAnchoredSpring : public ParticleForceGenerator
+{
+public:
+	/*
+	* Create a particle anchored spring with the given values
+	*/
+	ParticleAnchoredSpring(Vector3* anchor, real springConstant, real restLength);
+
+	/*
+	* Applies the spring force to the given particle
+	*/
+	virtual void updateForce(Particle* particle, real duration);
+
+
+private:
+	/*
+	* The location of the anchored end of the spring
+	*/
+	Vector3* anchor;
+
+	/*
+	* The spring constant
+	*/
+	real springConstant;
+
+	/*
+	The rest length of the spring
+	*/
+	real restLength;
+
+};
+
+class ParticleBungee : public ParticleForceGenerator
+{
+public:
+	/*
+	* Creates the particle bungee with the given parameters
+	*/
+	ParticleBungee(Particle* other, real springConstant, real restLength);
+
+	/*
+	* Applies the force to the given particle
+	*/
+	virtual void updateForce(Particle* particle, real duration);
+
+private:
+
+	/*
+	* Location of the other particle
+	*/
+	Particle* other;
+
+	/*
+	* Value of the spring constant
+	*/
+	real springConstant;
+
+	/*
+	* Rest length of the spring
+	*/
+	real restLength;
+
+};
+
+class ParticleBuoyancy : public ParticleForceGenerator
+{
+public:
+	/*
+	* Creates the generator with the given parameters
+	*/
+	ParticleBuoyancy(real maxDepth, real volume, real waterHeight, real liquidDensity = 1000.0f);
+
+	/*
+	* Applies the force to the particle
+	*/
+	virtual void updateForce(Particle* particle, real duration);
+
+private:
+
+	/*
+	* The maximum submersion depth of the object before it generates the maximum buoyancy force
+	*/
+	real maxDepth;
+
+	/*
+	* The volume of the object
+	*/
+	real volume;
+
+	/*
+	* The height of the water plane above y=0. The plane will be parallel to the xz plane
+	*/
+	real waterHeight;
+
+	/*
+	* Density of the liquid the object is submerged in
+	* Pure water has a density of 1000 kg per cubic meter
+	*/
+	real liquidDensity;
+
+};
+
 }

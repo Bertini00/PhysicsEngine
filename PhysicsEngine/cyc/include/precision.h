@@ -18,4 +18,6 @@ namespace cyclone
 #define real_sqrt sqrtf
 #define REAL_MAX FLT_MAX
 #define real_pow powf
+	// Defines the precision of the absolute magnitude operator
+#define real_abs fabsf
 }

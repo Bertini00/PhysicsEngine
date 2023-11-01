@@ -111,7 +111,7 @@ namespace cyclone
 		void normalize() {
 			real l = magnitude();
 			if (l > 0)
-				(*this) *= ((real)1) / 1;
+				(*this) *= ((real)1) / l;
 		}
 
 		/** Add the given vector to this, scaled by the given amount*/
