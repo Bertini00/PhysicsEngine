@@ -149,3 +149,32 @@ void ParticleBuoyancy::updateForce(Particle* particle, real duration) {
 
 
 }
+
+ParticleFakeSpring::ParticleFakeSpring(Vector3* anchor, real springConstant, real damping) {
+	ParticleFakeSpring::anchor = anchor;
+	ParticleFakeSpring::springConstant = springConstant;
+	ParticleFakeSpring::damping = damping;
+}
+
+void ParticleFakeSpring::updateForce(Particle* particle, real duration) {
+	if (!particle->hasFiniteMass()) return;
+
+	// Calculate the relative position of the particle to the anchor
+	Vector3 position;
+	position = particle->getPosition() - *anchor;
+
+	// Calculate the constant and check whether they are in bounds
+	real gamma = 0.5f * real_sqrt(4 * springConstant - damping * damping);
+	if (gamma == 0.0f) return;
+	Vector3 c = position * (damping / 2.0f * gamma) + particle->getVelocity() * (1.0f / gamma);
+
+	// Calculate the target position
+
+	Vector3 finalPosition = (position * real_cos(gamma * duration) + c * real_sin(gamma * duration)) * real_exp(-0.5f * damping * duration);
+
+	// Calculate the resulting acceleration and the force
+	Vector3 finalAcceleration = (finalPosition - position) * (1.0f / duration * duration) - particle->getVelocity() * duration;
+
+	particle->addForce(finalAcceleration * particle->getMass());
+	
+}

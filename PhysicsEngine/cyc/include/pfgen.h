@@ -235,4 +235,40 @@ private:
 
 };
 
+/*
+* A force generator that fakes a stiff spring force, and where one end is attached to a fixed point in space
+*/
+class ParticleFakeSpring : public ParticleForceGenerator
+{
+public:
+	
+	/*
+	* Creates a new spring with the given parameters
+	*/
+	ParticleFakeSpring(Vector3* anchor, real springContant, real damping);
+
+	/*
+	* Applies the spring force to the given particle
+	*/
+	virtual void updateForce(Particle* particle, real duration);
+
+private:
+	/*
+	* The location of the anchored end of the spring
+	*/
+	Vector3* anchor;
+
+	/*
+	* The spring constant
+	*/
+	real springConstant;
+
+	/*
+	* The damping of the oscillation of the spring
+	*/
+	real damping;
+
+
+};
+
 }
