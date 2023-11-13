@@ -27,12 +27,18 @@
     <ClInclude Include="cyc\include\pfgen.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="cyc\include\pcontacts.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="cyc\src\particle.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="cyc\src\pfgen.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="cyc\src\pcontacts.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>

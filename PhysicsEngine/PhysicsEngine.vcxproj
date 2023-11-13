@@ -21,11 +21,13 @@
   <ItemGroup>
     <ClInclude Include="cyc\include\core.h" />
     <ClInclude Include="cyc\include\particle.h" />
+    <ClInclude Include="cyc\include\pcontacts.h" />
     <ClInclude Include="cyc\include\pfgen.h" />
     <ClInclude Include="cyc\include\precision.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="cyc\src\particle.cpp" />
+    <ClCompile Include="cyc\src\pcontacts.cpp" />
     <ClCompile Include="cyc\src\pfgen.cpp" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
