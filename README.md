@@ -15,7 +15,10 @@ Simple Physics Engine made following the book from Ian Milling "Game Physics Eng
 - **Hook's Law**
     - Springlike Force Generators
     - Created a bunch of spring-like generators (Buoyancy, Stiff Spring, Anchored Spring, ...)
+- **Hard constraint**
+    - Particle contact and collisions (detection, change velocity after collision and handle interpenetration)
+    - Particle Links class (Cables and Rods)
 
 ### To be implemented:
-- **Hard constraint (Chapter 7)**
+- **Mass Aggregate Physics Engine (Chapter 8)**
 - **Chapters after**
