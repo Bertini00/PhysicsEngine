@@ -14,6 +14,8 @@ namespace cyclone
 	*/
 	class ParticleContact
 	{
+
+		friend class ParticleContactResolver;
 	public:
 		/*
 		* Holds the particle that are involved in the contact. The 
@@ -60,4 +62,43 @@ namespace cyclone
 	};
 
 
+	/*
+	* The contact resolution routine for particle contacts. One
+	* resolver instance can be shared for whole simulation.
+	*/
+	class ParticleContactResolver
+	{
+	protected:
+		/*
+		* Holds the number of iterationg allowed
+		*/
+		unsigned iterations;
+
+		/*
+		* This is a performance tracking value, we keep a record
+		* of the iteration used
+		*/
+		unsigned iterationsUsed;
+
+
+	public:
+		/*
+		* Creates a new contact resolver
+		*/
+		ParticleContactResolver(unsigned iterations);
+
+		/*
+		* Set the number of iterations that can be used
+		*/
+		void setIterations(unsigned iterations);
+
+		/*
+		* Resolves a set of particle contact for both penetrations and velocity
+		*/
+		void resolveContacts(ParticleContact* contactArray, unsigned numContacts, real duration);
+
+
+	};
+
+	
 }
